@@ -1,7 +1,7 @@
 #EXTM3U
 #EXT-X-ALLOW-CACHE:YES
 #EXT-X-VERSION:3
-#EXT-X-KEY:METHOD=AES-128,URI="/data/data/io.github.mayunfei.simple/files/keyText.txt",IV=0xe8996e56e51e066954590686e8f63990
+#EXT-X-KEY:METHOD=AES-128,URI="https://raw.githubusercontent.com/MaYunFei/TXLiveDemo/master/app/src/main/assets/keyText.txt",IV=0xe8996e56e51e066954590686e8f63990
 #EXT-X-TARGETDURATION:11
 #EXTINF:9.92,"551592"
 https://mv.dongaocloud.com/2b4f/2ba8/fbe/d8e/0591f4127b25ca0c083a3e44e8edb0f4/0591f4127b25ca0c083a3e44e8edb0f4-000.ts
