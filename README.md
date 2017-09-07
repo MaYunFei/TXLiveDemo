@@ -1,7 +1,8 @@
 # TXLiveDemo
 腾讯直播demo
 ## SDK
-直播sdk https://www.qcloud.com/document/product/454/7873
+[直播sdk https://www.qcloud.com/document/product/454/7873](https://www.qcloud.com/document/product/454/7873)
+[播放文档 https://www.qcloud.com/document/product/454/788 ](https://www.qcloud.com/document/product/454/7886)
 
 ## 步骤
 xml
@@ -22,3 +23,19 @@ String flvUrl = "rtmp://live.hkstv.hk.lxdns.com/live/hks";
 mLivePlayer.startPlay(flvUrl, TXLivePlayer.PLAY_TYPE_LIVE_RTMP);
 
 绑定生命周期
+
+
+## ijkplayer
+业务上需要播放加密的 m3u8文件 在ijkplayer中找到选项
+[https://github.com/Bilibili/ijkplayer/issues/2348](https://github.com/Bilibili/ijkplayer/issues/2348)
+业务上 链接是加密的 所以要开启 openssl
+```
+./init-android-openssl.sh
+./init-android.sh
+./compile-openssl.sh clean//清除
+./compile-ffmpeg.sh clean//清除
+./compile-openssl.sh all//编译
+./compile-ffmpeg.sh all//编译
+./compile-ijk.sh all
+```
+

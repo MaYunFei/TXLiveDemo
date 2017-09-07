@@ -17,7 +17,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
 
-            <com.tencent.rtmp.ui.TXCloudVideoView
+            <io.github.mayunfei.simple.PlaySupportSmallFrameLayout
                 android:id="@+id/video_view"
                 android:layout_width="match_parent"
                 android:layout_height="250dp"
@@ -80,10 +80,10 @@
 
         </LinearLayout>
     </LinearLayout>
-    <com.tencent.rtmp.ui.TXCloudVideoView
-        android:id="@+id/video_view_small"
-        android:layout_width="200dp"
-        android:layout_height="wrap_content"
-        android:visibility="visible" />
+    <!--<com.tencent.rtmp.ui.TXCloudVideoView-->
+        <!--android:id="@+id/video_view_small"-->
+        <!--android:layout_width="160dp"-->
+        <!--android:layout_height="90dp"-->
+        <!--android:visibility="visible" />-->
 
 </io.github.mayunfei.simple.DragGroup>

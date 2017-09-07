@@ -34,7 +34,7 @@ public class DragGroup extends RelativeLayout {
             @Override
             public boolean tryCaptureView(View child, int pointerId)
             {
-                return child.getId() == R.id.video_view_small;
+                return child.getId() == R.id.id_small_screen;
             }
 
             @Override
@@ -48,6 +48,8 @@ public class DragGroup extends RelativeLayout {
             {
                 return top;
             }
+
+
         });
     }
 
