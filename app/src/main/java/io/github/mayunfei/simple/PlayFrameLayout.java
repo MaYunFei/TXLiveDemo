@@ -6,7 +6,6 @@ import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.util.AttributeSet;
 import android.view.ViewGroup;
-import android.view.Window;
 import android.widget.FrameLayout;
 import android.widget.ImageView;
 
@@ -55,12 +54,12 @@ public class PlayFrameLayout extends FrameLayout {
 
     public void onDestroy(){
         mTxCloudVideoView.onDestroy();
-        PlayerManager.getInstance().stopPlay();
+        LivePlayerManager.getInstance().stopPlay();
     }
 
     public void onPause(){
         mTxCloudVideoView.onPause();
-        PlayerManager.getInstance().pause();
+        LivePlayerManager.getInstance().pause();
 
     }
 
@@ -69,12 +68,12 @@ public class PlayFrameLayout extends FrameLayout {
     }
 
     public void play(String rtmpUrl){
-        PlayerManager.getInstance().setPlayerView(mTxCloudVideoView);
-        PlayerManager.getInstance().startPlayRtmp(rtmpUrl);
+        LivePlayerManager.getInstance().setPlayerView(mTxCloudVideoView);
+        LivePlayerManager.getInstance().startPlayRtmp(rtmpUrl);
     }
 
     public void pause(){
-        PlayerManager.getInstance().pause();
+        LivePlayerManager.getInstance().pause();
     }
 
 

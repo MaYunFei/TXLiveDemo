@@ -1,20 +1,13 @@
 package io.github.mayunfei.simple;
 
 import android.content.res.AssetManager;
-import android.support.v4.app.Fragment;
 import android.support.v4.widget.ViewDragHelper;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.util.Log;
-import android.view.MotionEvent;
 import android.view.View;
-import android.view.ViewGroup;
 import android.widget.FrameLayout;
 
 import com.tencent.rtmp.ITXLivePlayListener;
-import com.tencent.rtmp.TXLiveConstants;
-import com.tencent.rtmp.TXLivePlayer;
-import com.tencent.rtmp.ui.TXCloudVideoView;
 
 import java.io.BufferedOutputStream;
 import java.io.File;
@@ -28,7 +21,6 @@ import okhttp3.Request;
 import okhttp3.Response;
 import okhttp3.WebSocket;
 import okhttp3.WebSocketListener;
-import okio.ByteString;
 
 public class MainActivity extends AppCompatActivity implements View.OnClickListener,ITXLivePlayListener {
     private DragGroup content;
@@ -48,7 +40,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 //            saveFile(m3u8,"online.m3u8");
 //            saveFile(key,"keyText.txt");
 //        }
-        PlayerManager.getInstance().init(this);
+        LivePlayerManager.getInstance().init(this);
         setContentView(R.layout.activity_main);
         //mPlayerView即step1中添加的界面view
         mPlayerView = (PlaySupportSmallFrameLayout) findViewById(R.id.video_view);

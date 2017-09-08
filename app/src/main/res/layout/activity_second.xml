@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context="io.github.mayunfei.simple.activity.SecondActivity">
+
+    <io.github.mayunfei.simple.player.StandardViewPlayer
+        android:id="@+id/player"
+        android:layout_width="match_parent"
+        android:layout_height="200dp" />
+
+
+    <io.github.mayunfei.simple.player.StandardViewPlayer
+        android:id="@+id/full_player"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:visibility="gone" />
+
+</RelativeLayout>
