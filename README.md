@@ -29,6 +29,10 @@ mLivePlayer.startPlay(flvUrl, TXLivePlayer.PLAY_TYPE_LIVE_RTMP);
 业务上需要播放加密的 m3u8文件 在ijkplayer中找到选项
 [https://github.com/Bilibili/ijkplayer/issues/2348](https://github.com/Bilibili/ijkplayer/issues/2348)
 业务上 链接是加密的 所以要开启 openssl
+
+export COMMON_FF_CFG_FLAGS="$COMMON_FF_CFG_FLAGS --enable-openssl"
+remove --disable-protocol=crypto in config/module-lite.sh and recompile it.
+
 ```
 ./init-android-openssl.sh
 ./init-android.sh
