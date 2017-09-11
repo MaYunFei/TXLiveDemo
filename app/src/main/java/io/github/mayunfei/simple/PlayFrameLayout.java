@@ -11,6 +11,8 @@ import android.widget.ImageView;
 
 import com.tencent.rtmp.ui.TXCloudVideoView;
 
+import io.github.mayunfei.simple.player.LivePlayerManager;
+
 /**
  * Created by mayunfei on 17-9-7.
  */
@@ -69,7 +71,7 @@ public class PlayFrameLayout extends FrameLayout {
 
     public void play(String rtmpUrl){
         LivePlayerManager.getInstance().setPlayerView(mTxCloudVideoView);
-        LivePlayerManager.getInstance().startPlayRtmp(rtmpUrl);
+        LivePlayerManager.getInstance().startPlay(rtmpUrl);
     }
 
     public void pause(){

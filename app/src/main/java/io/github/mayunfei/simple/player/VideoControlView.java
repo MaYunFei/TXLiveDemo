@@ -5,13 +5,10 @@ import android.support.annotation.AttrRes;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.util.AttributeSet;
-import android.view.View;
 import android.view.ViewGroup;
 import android.widget.FrameLayout;
 
 import com.tencent.rtmp.ui.TXCloudVideoView;
-
-import io.github.mayunfei.simple.LivePlayerManager;
 
 /**
  * Created by mayunfei on 17-9-8.
@@ -20,7 +17,6 @@ import io.github.mayunfei.simple.LivePlayerManager;
 public abstract class VideoControlView extends FrameLayout implements LiveListener {
 
     TXCloudVideoView mVideoView;
-    protected boolean isPause = false;
 
     public VideoControlView(@NonNull Context context) {
         this(context, null);
@@ -37,23 +33,21 @@ public abstract class VideoControlView extends FrameLayout implements LiveListen
         addView(mVideoView, new LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.MATCH_PARENT));
     }
 
-    public void playRtmp(@NonNull String url) {
-        isPause = false;
-        LiveListener listener = LivePlayerManager.getInstance().listener();
-        if (listener != null) {
-            listener.onChange();
-        }
+    public void play(@NonNull String url) {
+//        LiveListener listener = LivePlayerManager.getInstance().listener();
+//        if (listener != null) {
+//            listener.onChange();
+//        }
         LivePlayerManager.getInstance().setPlayerView(mVideoView);
         LivePlayerManager.getInstance().setListener(this);
-        LivePlayerManager.getInstance().startPlayRtmp(url);
+        LivePlayerManager.getInstance().startPlay(url);
         onPrepared();
     }
 
     public void pause() {
-        if (!isPause) {
+        if (!LivePlayerManager.getInstance().isPause()) {
             mVideoView.onPause();
             LivePlayerManager.getInstance().pause();
-            isPause = true;
         }
         onVideoPause();
     }

@@ -7,11 +7,15 @@ package io.github.mayunfei.simple.player;
 public interface LiveListener {
     void onPrepared();
 
-    void onStart();
+    void onPlaying();
 
+    /**
+     * 缓冲中
+     */
     void onLoading();
 
     void onConnectError();
+
 
     void onWarningReconnect();
 

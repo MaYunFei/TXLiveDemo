@@ -1,7 +1,7 @@
 # TXLiveDemo
 腾讯直播demo
 ## SDK
-[直播sdk https://www.qcloud.com/document/product/454/7873](https://www.qcloud.com/document/product/454/7873)
+[直播sdk https://www.qcloud.com/document/product/454/7886](https://www.qcloud.com/document/product/454/7886)
 [播放文档 https://www.qcloud.com/document/product/454/788 ](https://www.qcloud.com/document/product/454/7886)
 
 ## 步骤
@@ -20,7 +20,7 @@ mLivePlayer.setPlayerView(mPlayerView);
 
 start
 String flvUrl = "rtmp://live.hkstv.hk.lxdns.com/live/hks";
-mLivePlayer.startPlay(flvUrl, TXLivePlayer.PLAY_TYPE_LIVE_RTMP);
+mLivePlayer.startPlay(flvUrl, TXLivePlayer.PLAY_TYPE_LIVE_RTMP);程度
 
 绑定生命周期
 
