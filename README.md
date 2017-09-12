@@ -43,3 +43,8 @@ remove --disable-protocol=crypto in config/module-lite.sh and recompile it.
 ./compile-ijk.sh all
 ```
 
+## 问题
+没有暂停和恢复
+不能实时去替换播放的view ，每次设置之后需要重新开始播放
+
+
