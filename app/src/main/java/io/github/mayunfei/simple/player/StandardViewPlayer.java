@@ -47,9 +47,9 @@ public class StandardViewPlayer extends VideoControlView implements PlayerView {
     }
 
     private void initView() {
-        iv_start = findViewById(R.id.iv_start);
-        iv_fullscreen = findViewById(R.id.iv_fullscreen);
-        loadingBar = findViewById(R.id.pb_loading);
+        iv_start = (ImageView) findViewById(R.id.iv_start);
+        iv_fullscreen = (ImageView) findViewById(R.id.iv_fullscreen);
+        loadingBar = (ContentLoadingProgressBar) findViewById(R.id.pb_loading);
     }
 
     private void initEvent() {

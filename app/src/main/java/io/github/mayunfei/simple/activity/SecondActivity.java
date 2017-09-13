@@ -1,6 +1,9 @@
 package io.github.mayunfei.simple.activity;
 
 import android.content.pm.ActivityInfo;
+import android.net.Uri;
+import android.support.v4.app.FragmentManager;
+import android.support.v4.app.FragmentTransaction;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
@@ -9,6 +12,11 @@ import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.FrameLayout;
 
+import com.tencent.imsdk.TIMCallBack;
+
+import io.github.mayunfei.imsdk.Constant;
+import io.github.mayunfei.imsdk.business.InitBusiness;
+import io.github.mayunfei.imsdk.business.LoginBusiness;
 import io.github.mayunfei.simple.DragGroup;
 import io.github.mayunfei.simple.player.DensityUtils;
 import io.github.mayunfei.simple.player.LivePlayerManager;
@@ -16,7 +24,7 @@ import io.github.mayunfei.simple.R;
 import io.github.mayunfei.simple.player.SmallScreen;
 import io.github.mayunfei.simple.player.StandardViewPlayer;
 
-public class SecondActivity extends AppCompatActivity implements StandardViewPlayer.VideoPlayerFullScreenListener {
+public class SecondActivity extends AppCompatActivity implements StandardViewPlayer.VideoPlayerFullScreenListener, TIMCallBack ,ChatFragment.OnFragmentInteractionListener {
 
     private StandardViewPlayer mPlayer;
     Button btn_change;
@@ -32,7 +40,7 @@ public class SecondActivity extends AppCompatActivity implements StandardViewPla
         LivePlayerManager.getInstance().init(this);
         mPlayer = (StandardViewPlayer) findViewById(R.id.player);
         dragGroup = (DragGroup) findViewById(R.id.dragGroup);
-        mPlayer.play("rtmp://pull.live.dongaocloud.com/live/8250_100159_cif");
+//        mPlayer.play("rtmp://pull.live.dongaocloud.com/live/8250_100159_cif");
         btn_change = (Button) findViewById(R.id.btn_change);
         smallScreen = (SmallScreen) findViewById(R.id.id_small_screen);
         btn_change.setOnClickListener(new View.OnClickListener() {
@@ -49,7 +57,8 @@ public class SecondActivity extends AppCompatActivity implements StandardViewPla
         mPlayer.setVideoPlayerFullScreenListener(this);
         mScreenWidth = DensityUtils.getWidthInPx(this);
         mScreenHeight = DensityUtils.getHeightInPx(this);
-
+//        InitBusiness.start(this,4);
+//        LoginBusiness.loginIm("yunfei", Constant.Sig,this);
 
 //        FrameLayout.LayoutParams smallScreenLayoutParams = (FrameLayout.LayoutParams) smallScreen.getLayoutParams();
 //        smallScreenLayoutParams.leftMargin = (int) (mScreenWidth - DensityUtils.dip2px(this,200));
@@ -119,6 +128,25 @@ public class SecondActivity extends AppCompatActivity implements StandardViewPla
 
             }
         }
+
+    }
+
+    @Override
+    public void onError(int i, String s) {
+
+    }
+
+    @Override
+    public void onSuccess() {
+        //登录成功
+        FragmentManager supportFragmentManager = getSupportFragmentManager();
+        FragmentTransaction transaction = supportFragmentManager.beginTransaction();
+        transaction.add(R.id.frame_chat,ChatFragment.newInstance(Constant.GROUP_ID));
+        transaction.commit();
+    }
+
+    @Override
+    public void onFragmentInteraction(Uri uri) {
 
     }
 }

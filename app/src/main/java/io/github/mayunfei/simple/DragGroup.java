@@ -105,7 +105,6 @@ public class DragGroup extends FrameLayout {
             @Override
             public boolean tryCaptureView(View child, int pointerId) {
                 if (child.getId() == R.id.id_small_screen) {
-                    mDragView = child;
                     return true;
                 }
                 return false;
@@ -132,12 +131,19 @@ public class DragGroup extends FrameLayout {
                 mLastY = changedView.getY();
             }
 
+            @Override
+            public int getOrderedChildIndex(int index) {
+                return super.getOrderedChildIndex(index);
+            }
+
+
         });
     }
 
     @Override
     public boolean onInterceptTouchEvent(MotionEvent event) {
-        return mDragger.shouldInterceptTouchEvent(event);
+        boolean event1 = mDragger.shouldInterceptTouchEvent(event);
+        return event1;
     }
 
     @Override

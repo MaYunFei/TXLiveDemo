@@ -5,6 +5,7 @@ import android.support.annotation.AttrRes;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.util.AttributeSet;
+import android.view.MotionEvent;
 
 /**
  * Created by mayunfei on 17-9-11.
@@ -30,6 +31,7 @@ public class SmallScreen extends VideoControlView implements PlayerView {
         int childHeightSize = (int) (childWidthSize * 1.0 / 16 * 9);
         setMeasuredDimension(childWidthSize, childHeightSize);
     }
+
 
     @Override
     public void onPrepared() {
