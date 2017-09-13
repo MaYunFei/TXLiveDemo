@@ -105,6 +105,7 @@ public class DragGroup extends FrameLayout {
             @Override
             public boolean tryCaptureView(View child, int pointerId) {
                 if (child.getId() == R.id.id_small_screen) {
+                    mDragView = child;
                     return true;
                 }
                 return false;

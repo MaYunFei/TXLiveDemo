@@ -40,7 +40,7 @@ public class SecondActivity extends AppCompatActivity implements StandardViewPla
         LivePlayerManager.getInstance().init(this);
         mPlayer = (StandardViewPlayer) findViewById(R.id.player);
         dragGroup = (DragGroup) findViewById(R.id.dragGroup);
-//        mPlayer.play("rtmp://pull.live.dongaocloud.com/live/8250_100159_cif");
+        mPlayer.play("rtmp://pull.live.dongaocloud.com/live/8250_100159_cif");
         btn_change = (Button) findViewById(R.id.btn_change);
         smallScreen = (SmallScreen) findViewById(R.id.id_small_screen);
         btn_change.setOnClickListener(new View.OnClickListener() {
@@ -57,8 +57,8 @@ public class SecondActivity extends AppCompatActivity implements StandardViewPla
         mPlayer.setVideoPlayerFullScreenListener(this);
         mScreenWidth = DensityUtils.getWidthInPx(this);
         mScreenHeight = DensityUtils.getHeightInPx(this);
-//        InitBusiness.start(this,4);
-//        LoginBusiness.loginIm("yunfei", Constant.Sig,this);
+        InitBusiness.start(this,4);
+        LoginBusiness.loginIm("yunfei", Constant.Sig,this);
 
 //        FrameLayout.LayoutParams smallScreenLayoutParams = (FrameLayout.LayoutParams) smallScreen.getLayoutParams();
 //        smallScreenLayoutParams.leftMargin = (int) (mScreenWidth - DensityUtils.dip2px(this,200));

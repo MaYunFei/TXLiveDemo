@@ -19,7 +19,7 @@
             <io.github.mayunfei.simple.player.StandardViewPlayer
                 android:id="@+id/player"
                 android:layout_width="match_parent"
-                android:layout_height="200dp" />
+                android:layout_height="200dp"/>
 
             <FrameLayout
                 android:id="@+id/frame_chat"
@@ -30,10 +30,16 @@
 
         <io.github.mayunfei.simple.player.SmallScreen
             android:id="@id/id_small_screen"
-            android:clickable="true"
             android:layout_width="200dp"
             android:layout_height="112.5dp"
-            />
+            >
+            <Button
+                android:text="123"
+                android:visibility="invisible"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+
+        </io.github.mayunfei.simple.player.SmallScreen>
 
         <Button
             android:id="@+id/btn_change"
