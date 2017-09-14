@@ -14,13 +14,13 @@ import com.tencent.rtmp.ui.TXCloudVideoView;
  * Created by mayunfei on 17-9-14.
  */
 
-public abstract class VideoControlView extends FrameLayout implements LiveListener{
+public abstract class VideoControlView extends FrameLayout implements LiveListener {
     private final TXCloudVideoView mVideoView;
+    private LivePlayer mPlayer;
 
     public VideoControlView(@NonNull Context context) {
         this(context, null);
     }
-
 
     public VideoControlView(@NonNull Context context, @Nullable AttributeSet attrs) {
         this(context, attrs, 0);
@@ -30,6 +30,31 @@ public abstract class VideoControlView extends FrameLayout implements LiveListen
         super(context, attrs, defStyleAttr);
         mVideoView = new TXCloudVideoView(context);
         addView(mVideoView, new LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.MATCH_PARENT));
+        mPlayer = new LivePlayer(context);
+        mPlayer.setPlayerView(mVideoView);
+    }
 
+    public void play(String url){
+        if (!Util.checkUrl(url)){
+            onPlayUrlError();
+        return;
+        }
+        mPlayer.play(url);
+    }
+
+    public void onPause() {
+        mVideoView.onPause();
+        mPlayer.stop(true);
+    }
+
+    public void onResume() {
+        mVideoView.onResume();
+        mPlayer.resume();
+    }
+
+
+    public void onDestory() {
+        mVideoView.onDestroy();
+        mPlayer.destory();
     }
 }

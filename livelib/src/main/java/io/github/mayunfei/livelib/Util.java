@@ -10,17 +10,23 @@ public class Util {
     private Util() {
     }
 
-    public static int checkLiveUrl(String playUrl) {
+    /**
+     * 判断播放类型
+     */
+    static int checkLiveUrl(String playUrl) {
         if (playUrl.startsWith("rtmp://")) {
             return TXLivePlayer.PLAY_TYPE_LIVE_RTMP;
         } else if ((playUrl.startsWith("http://") || playUrl.startsWith("https://")) && playUrl.contains(".flv")) {
             return TXLivePlayer.PLAY_TYPE_LIVE_FLV;
 //        } else if ((playUrl.startsWith("http://") || playUrl.startsWith("https://")) && playUrl.contains(".m3u8")) {
 //            return TXLivePlayer.PLAY_TYPE_VOD_HLS;//m3u8
-        }
-        else {
+        } else {
             return -1;
         }
+    }
+
+    static boolean checkUrl(String playUrl) {
+        return checkLiveUrl(playUrl) != -1;
     }
 
 }

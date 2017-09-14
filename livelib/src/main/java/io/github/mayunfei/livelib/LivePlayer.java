@@ -55,6 +55,7 @@ public class LivePlayer implements ITXLivePlayListener {
         switch (event) {
             case TXLiveConstants.PLAY_EVT_CONNECT_SUCC:
                 Log.i(TAG, "//连接服务器成功");
+                mLiveListener.onConnectSuccess();
                 break;
             case TXLiveConstants.PLAY_EVT_RTMP_STREAM_BEGIN:
                 Log.i(TAG, "//rtmp 开始拉流");
@@ -96,6 +97,7 @@ public class LivePlayer implements ITXLivePlayListener {
     public void onNetStatus(Bundle bundle) {
         int fps = bundle.getInt(TXLiveConstants.NET_STATUS_VIDEO_FPS);
         //TODO 应该判断是否在播放
+        mLiveListener.onVideoNetEvent();
     }
 
     public LivePlayer(Context context) {
@@ -105,12 +107,27 @@ public class LivePlayer implements ITXLivePlayListener {
     /**
      * 设置播放链接
      */
-    public void setPlayUrl(String playUrl) throws IllegalAccessException {
+    public void setPlayUrl(String playUrl){
         mPlayType = Util.checkLiveUrl(playUrl);
-        if (mPlayType == -1) {
-            throw new IllegalArgumentException("直播链接错误");
-        }
         mPlayUrl = playUrl;
+    }
+
+    public void play(String url){
+        setPlayUrl(url);
+        resume();
+    }
+
+    public void resume() {
+        mLivePlayer.startPlay(mPlayUrl, mPlayType);
+    }
+
+    /**
+     * 停止拉流
+     *
+     * @param isShowLastImg 是否保存最后一帧
+     */
+    public void stop(boolean isShowLastImg) {
+        mLivePlayer.stopPlay(isShowLastImg);
     }
 
     /**
@@ -118,6 +135,7 @@ public class LivePlayer implements ITXLivePlayListener {
      */
     public void setPlayerView(TXCloudVideoView videoView) {
         mLivePlayer.setPlayerView(videoView);
+        mLiveListener.onVideoPrepared();
     }
 
     /**
