@@ -6,6 +6,7 @@ import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.WindowManager;
@@ -57,7 +58,7 @@ public class SecondActivity extends AppCompatActivity implements StandardViewPla
         mPlayer.setVideoPlayerFullScreenListener(this);
         mScreenWidth = DensityUtils.getWidthInPx(this);
         mScreenHeight = DensityUtils.getHeightInPx(this);
-        InitBusiness.start(this,4);
+        InitBusiness.start(this);
         LoginBusiness.loginIm("yunfei", Constant.Sig,this);
 
 //        FrameLayout.LayoutParams smallScreenLayoutParams = (FrameLayout.LayoutParams) smallScreen.getLayoutParams();
@@ -133,12 +134,13 @@ public class SecondActivity extends AppCompatActivity implements StandardViewPla
 
     @Override
     public void onError(int i, String s) {
-
+        Log.e("IMSDK ","error " +s);
     }
 
     @Override
     public void onSuccess() {
         //登录成功
+        Log.e("IMSDK","success");
         FragmentManager supportFragmentManager = getSupportFragmentManager();
         FragmentTransaction transaction = supportFragmentManager.beginTransaction();
         transaction.add(R.id.frame_chat,ChatFragment.newInstance(Constant.GROUP_ID));

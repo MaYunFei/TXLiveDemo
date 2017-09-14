@@ -133,6 +133,16 @@ public class DragGroup extends FrameLayout {
             }
 
             @Override
+            public int getViewHorizontalDragRange(View child) {
+                return getMeasuredHeight() - child.getMeasuredHeight();
+            }
+
+            @Override
+            public int getViewVerticalDragRange(View child) {
+                return getMeasuredWidth() - child.getMeasuredWidth();
+            }
+
+            @Override
             public int getOrderedChildIndex(int index) {
                 return super.getOrderedChildIndex(index);
             }

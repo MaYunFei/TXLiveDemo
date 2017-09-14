@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context="io.github.mayunfei.draw_board.MainActivity">
+
+    <FrameLayout
+        android:id="@+id/content"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <io.github.mayunfei.draw_board.PPTView
+            android:id="@+id/ppt_view"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+
+        <io.github.mayunfei.draw_board.Whiteboard
+            android:id="@+id/whiteboard"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+
+    </FrameLayout>
+
+
+    <Button
+        android:id="@+id/btn_change"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="切换小屏" />
+
+    <Button
+        android:id="@+id/btn_drawline"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="画线" />
+
+    <Button
+        android:id="@+id/btn_clear"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="橡皮" />
+    <Button
+        android:id="@+id/btn_change_ppt"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="切换ppt" />
+
+
+</LinearLayout>

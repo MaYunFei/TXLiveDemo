@@ -143,7 +143,7 @@ public class LivePlayerManager implements ITXLivePlayListener {
                 //播放结束
                 break;
             case TXLiveConstants.PLAY_EVT_PLAY_LOADING:
-                Log.i(TAG, "//加载中 缓冲中");
+                Log.i(TAG, "//加载中 缓冲中" + bundle);
                 listener().onLoading();
                 mState = CURRENT_STATE_PREPAREING;
                 //加载中
@@ -181,7 +181,10 @@ public class LivePlayerManager implements ITXLivePlayListener {
     public void pause() {
         checkInit();
         mLivePlayer.stopPlay(false);
-        listener().onVideoPause();
+        if (listener()!=null){
+
+            listener().onVideoPause();
+        }
         mState = CURRENT_STATE_PAUSE;
     }
 
