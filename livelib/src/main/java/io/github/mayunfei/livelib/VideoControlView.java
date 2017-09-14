@@ -8,6 +8,7 @@ import android.util.AttributeSet;
 import android.view.ViewGroup;
 import android.widget.FrameLayout;
 
+import com.tencent.rtmp.TXLiveConstants;
 import com.tencent.rtmp.ui.TXCloudVideoView;
 
 /**
@@ -15,7 +16,7 @@ import com.tencent.rtmp.ui.TXCloudVideoView;
  */
 
 public abstract class VideoControlView extends FrameLayout implements LiveListener {
-    private final TXCloudVideoView mVideoView;
+    private  TXCloudVideoView mVideoView;
     private LivePlayer mPlayer;
 
     public VideoControlView(@NonNull Context context) {
@@ -28,9 +29,21 @@ public abstract class VideoControlView extends FrameLayout implements LiveListen
 
     public VideoControlView(@NonNull Context context, @Nullable AttributeSet attrs, @AttrRes int defStyleAttr) {
         super(context, attrs, defStyleAttr);
+        init(context, attrs);
+    }
+
+    private void init(Context context,AttributeSet attrs) {
         mVideoView = new TXCloudVideoView(context);
         addView(mVideoView, new LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.MATCH_PARENT));
-        mPlayer = new LivePlayer(context);
+        mVideoView.setRenderMode(TXLiveConstants.RENDER_MODE_ADJUST_RESOLUTION);
+    }
+
+    @Override
+    protected void onFinishInflate() {
+        super.onFinishInflate();
+        mPlayer = new LivePlayer(getContext());
+        //设置监听事件
+        mPlayer.setLiveListener(this);
         mPlayer.setPlayerView(mVideoView);
     }
 
@@ -42,17 +55,26 @@ public abstract class VideoControlView extends FrameLayout implements LiveListen
         mPlayer.play(url);
     }
 
+    /**
+     * 暂停
+     */
     public void onPause() {
         mVideoView.onPause();
         mPlayer.stop(true);
     }
 
+    /**
+     * 重启
+     */
     public void onResume() {
         mVideoView.onResume();
         mPlayer.resume();
     }
 
 
+    /**
+     * 销毁
+     */
     public void onDestory() {
         mVideoView.onDestroy();
         mPlayer.destory();

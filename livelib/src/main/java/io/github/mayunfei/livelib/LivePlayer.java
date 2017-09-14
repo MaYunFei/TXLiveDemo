@@ -10,6 +10,8 @@ import com.tencent.rtmp.TXLivePlayer;
 import com.tencent.rtmp.ui.TXCloudVideoView;
 import com.tencent.ugc.TXVideoEditConstants;
 
+import io.github.mayunfei.utilslib.L;
+
 /**
  * Created by mayunfei on 17-9-14.
  */
@@ -40,7 +42,7 @@ public class LivePlayer implements ITXLivePlayListener {
 
     private LiveListener mLiveListener;
 
-    public void setmLiveListener(LiveListener mLiveListener) {
+    public void setLiveListener(LiveListener mLiveListener) {
         this.mLiveListener = mLiveListener;
     }
 
@@ -97,6 +99,7 @@ public class LivePlayer implements ITXLivePlayListener {
     public void onNetStatus(Bundle bundle) {
         int fps = bundle.getInt(TXLiveConstants.NET_STATUS_VIDEO_FPS);
         //TODO 应该判断是否在播放
+        L.i(TAG,"onNetStatus " + bundle);
         mLiveListener.onVideoNetEvent();
     }
 
@@ -118,6 +121,7 @@ public class LivePlayer implements ITXLivePlayListener {
     }
 
     public void resume() {
+        if (!mLivePlayer.isPlaying())
         mLivePlayer.startPlay(mPlayUrl, mPlayType);
     }
 

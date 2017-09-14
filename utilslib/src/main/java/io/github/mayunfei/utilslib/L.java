@@ -14,12 +14,12 @@ public class L {
     private L() {
     }
 
-    public void i(String tag, String msg) {
+    public static void i(String tag, String msg) {
         if (IS_DEBUG)
             Log.i(tag, msg);
     }
 
-    public void i(String msg) {
+    public static void  i(String msg) {
         i(TAG, msg);
     }
 }
