@@ -54,6 +54,7 @@ public class DragGroupView extends FrameLayout {
 
     public void setType(int type) {
         this.type = type;
+
     }
 
     public void setOrientation(int orientation) {
@@ -64,7 +65,7 @@ public class DragGroupView extends FrameLayout {
                 break;
             case TYPE_PORTRAIT://竖屏
                 mLastX = getMeasuredWidth() - mDragView.getMeasuredWidth();
-                mLastY = DensityUtils.dip2px(getContext(), 200);
+                mLastY = Math.min(DensityUtils.getWidthInPx(getContext()),DensityUtils.getHeightInDp(getContext())) / 16 * 9;
                 break;
         }
 

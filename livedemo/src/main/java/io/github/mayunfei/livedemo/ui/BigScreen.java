@@ -7,17 +7,20 @@ import android.support.annotation.Nullable;
 import android.util.AttributeSet;
 import android.widget.FrameLayout;
 
+import io.github.mayunfei.utilslib.L;
+
 /**
+ * 大屏始终能呈现出 16：9
  * Created by AlphaGo on 2017/9/15 0015.
  */
 
 public class BigScreen extends FrameLayout {
     public BigScreen(@NonNull Context context) {
-        this(context,null);
+        this(context, null);
     }
 
     public BigScreen(@NonNull Context context, @Nullable AttributeSet attrs) {
-        this(context, attrs,0);
+        this(context, attrs, 0);
     }
 
     public BigScreen(@NonNull Context context, @Nullable AttributeSet attrs, @AttrRes int defStyleAttr) {
@@ -26,9 +29,17 @@ public class BigScreen extends FrameLayout {
 
     @Override
     protected void onMeasure(int widthMeasureSpec, int heightMeasureSpec) {
-        super.onMeasure(widthMeasureSpec, heightMeasureSpec);
-        int measuredWidth = getMeasuredWidth();
-        int measuredHeight = Math.round(measuredWidth / 16f * 9);
-        setMeasuredDimension(measuredWidth, measuredHeight);
+        int measuredWidth = MeasureSpec.getSize(widthMeasureSpec);
+        int measuredHeight = MeasureSpec.getSize(heightMeasureSpec);
+        if (MeasureSpec.getMode(heightMeasureSpec) == MeasureSpec.AT_MOST){
+            measuredHeight = Math.round(measuredWidth / 16f * 9);
+        }else {
+            //高度太低了
+            if (measuredWidth*1.0f/measuredHeight > 16f/9){
+                measuredHeight = Math.round(measuredWidth / 16f * 9);
+            }
+        }
+        super.onMeasure(MeasureSpec.makeMeasureSpec(measuredWidth, MeasureSpec.EXACTLY), MeasureSpec.makeMeasureSpec(measuredHeight, MeasureSpec.EXACTLY));
+
     }
 }

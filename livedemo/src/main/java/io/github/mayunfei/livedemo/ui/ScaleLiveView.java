@@ -9,17 +9,19 @@ import android.util.AttributeSet;
 
 import io.github.mayunfei.livelib.LiveView;
 
-/** 16:9 的播放器
+/**
+ * 16:9 的播放器
  * Created by AlphaGo on 2017/9/14 0014.
  */
 
 public class ScaleLiveView extends LiveView {
+
     public ScaleLiveView(@NonNull Context context) {
-        this(context,null);
+        this(context, null);
     }
 
     public ScaleLiveView(@NonNull Context context, @Nullable AttributeSet attrs) {
-        this(context, attrs,0);
+        this(context, attrs, 0);
     }
 
     public ScaleLiveView(@NonNull Context context, @Nullable AttributeSet attrs, @AttrRes int defStyleAttr) {

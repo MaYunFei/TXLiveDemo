@@ -153,8 +153,7 @@ public class DragGroup extends FrameLayout {
 
     @Override
     public boolean onInterceptTouchEvent(MotionEvent event) {
-        boolean event1 = mDragger.shouldInterceptTouchEvent(event);
-        return event1;
+        return mDragger.shouldInterceptTouchEvent(event);
     }
 
     @Override

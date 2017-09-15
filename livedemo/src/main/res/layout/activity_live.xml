@@ -8,53 +8,65 @@
     tools:context="io.github.mayunfei.livedemo.LiveActivity">
 
     <io.github.mayunfei.livedemo.ui.DragGroupView
+        android:id="@+id/drag_group_view"
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
-        <FrameLayout
+        <LinearLayout
+            android:orientation="vertical"
             android:id="@+id/topView"
             android:layout_width="match_parent"
             android:layout_height="match_parent">
 
             <io.github.mayunfei.livedemo.ui.BigScreen
+                android:id="@+id/big_screen_parent"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content">
                 <FrameLayout
                     android:id="@+id/id_big_screen"
                     android:layout_width="match_parent"
-                    android:layout_height="match_parent">
+                    android:layout_height="wrap_content">
                     <io.github.mayunfei.livedemo.ui.ScaleLiveView
                         android:id="@+id/live_view"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent" />
                 </FrameLayout>
 
-                <LinearLayout
+                <RelativeLayout
                     android:orientation="vertical"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent">
                     <ImageView
+                        android:layout_alignParentRight="true"
                         android:id="@+id/full_screen"
                         android:src="@mipmap/ic_launcher"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content" />
                     <ImageView
+
                         android:id="@+id/switch_screen"
+                        android:layout_alignParentRight="true"
+                        android:layout_alignParentBottom="true"
                         android:src="@mipmap/ic_launcher"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content" />
-                </LinearLayout>
+                </RelativeLayout>
             </io.github.mayunfei.livedemo.ui.BigScreen>
 
+            <FrameLayout
+                android:id="@+id/frame_chat"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"/>
 
 
-        </FrameLayout>
+        </LinearLayout>
 
         <FrameLayout
             android:id="@id/id_small_screen"
             android:layout_width="200dp"
             android:layout_height="112.5dp" >
             <io.github.mayunfei.whiteboard.Whiteboard
+                android:background="@color/colorAccent"
                 android:id="@+id/white_board"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"/>

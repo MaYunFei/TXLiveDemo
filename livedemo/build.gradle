@@ -33,4 +33,5 @@ dependencies {
     testCompile 'junit:junit:4.12'
     compile project(path: ':livelib')
     compile project(':whiteboard')
+    compile project(':imsdk3.1.1')
 }

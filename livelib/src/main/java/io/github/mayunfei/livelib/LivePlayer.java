@@ -56,40 +56,40 @@ public class LivePlayer implements ITXLivePlayListener {
         Log.i(TAG, " " + bundle.toString() + " event " + event);
         switch (event) {
             case TXLiveConstants.PLAY_EVT_CONNECT_SUCC:
-                Log.i(TAG, "//连接服务器成功");
+                L.i(TAG, "//连接服务器成功");
                 mLiveListener.onConnectSuccess();
                 break;
             case TXLiveConstants.PLAY_EVT_RTMP_STREAM_BEGIN:
-                Log.i(TAG, "//rtmp 开始拉流");
+                L.i(TAG, "//rtmp 开始拉流");
                 break;
             case TXLiveConstants.PLAY_EVT_PLAY_BEGIN:
                 //rtmp 开始播放
-                Log.i(TAG, "//rtmp 开始播放");
+                L.i(TAG, "//rtmp 开始播放");
                 mLiveListener.onVideoPlaying();
                 mState = CURRENT_STATE_PLAYING;
                 break;
             case TXLiveConstants.PLAY_EVT_START_VIDEO_DECODER:
-                Log.i(TAG, "//正在解码");
+                L.i(TAG, "//正在解码");
                 break;
             case TXLiveConstants.PLAY_EVT_PLAY_END:
-                Log.i(TAG, "//播放结束");
+                L.i(TAG, "//播放结束");
                 mState = CURRENT_STATE_AUTO_COMPLETE;
                 //播放结束
                 break;
             case TXLiveConstants.PLAY_EVT_PLAY_LOADING:
-                Log.i(TAG, "//加载中 缓冲中" + bundle);
+                L.i(TAG, "//加载中 缓冲中" + bundle);
                 mLiveListener.onVideoLoading();
                 mState = CURRENT_STATE_PREPAREING;
                 //加载中
                 break;
             case TXLiveConstants.PLAY_ERR_NET_DISCONNECT:
                 //网络连接失败
-                Log.i(TAG, "//网络连接失败");
+                L.i(TAG, "//网络连接失败");
                 mLiveListener.onVideoConnectError();
                 break;
             case TXLiveConstants.PLAY_WARNING_RECONNECT:
                 //拉取失败
-                Log.i(TAG, "//拉取失败 启动网络冲连");
+                L.i(TAG, "//拉取失败 启动网络冲连");
                 mLiveListener.onVideoConnectError();
                 break;
         }
@@ -105,6 +105,7 @@ public class LivePlayer implements ITXLivePlayListener {
 
     public LivePlayer(Context context) {
         this.mLivePlayer = new TXLivePlayer(context.getApplicationContext());
+        this.mLivePlayer.setPlayListener(this);
     }
 
     /**

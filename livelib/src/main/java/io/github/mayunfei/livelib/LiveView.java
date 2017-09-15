@@ -36,11 +36,11 @@ public class LiveView extends VideoControlView {
 
 
     private void showLoading(){
-        pb_loading.show();
+        pb_loading.setVisibility(VISIBLE);
     }
 
     private void hideLoading(){
-        pb_loading.hide();
+        pb_loading.setVisibility(GONE);
     }
 
     @Override

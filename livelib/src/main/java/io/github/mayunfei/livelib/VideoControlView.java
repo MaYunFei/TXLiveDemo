@@ -41,10 +41,21 @@ public abstract class VideoControlView extends FrameLayout implements LiveListen
     @Override
     protected void onFinishInflate() {
         super.onFinishInflate();
-        mPlayer = new LivePlayer(getContext());
-        //设置监听事件
-        mPlayer.setLiveListener(this);
-        mPlayer.setPlayerView(mVideoView);
+        if (!isInEditMode()){
+            mPlayer = new LivePlayer(getContext());
+            //设置监听事件
+            mPlayer.setLiveListener(this);
+            mPlayer.setPlayerView(mVideoView);
+        }
+    }
+
+    public void setUrl(String url){
+        if (!Util.checkUrl(url)){
+            onPlayUrlError();
+            return;
+        }
+        mPlayer.setPlayUrl(url);
+
     }
 
     public void play(String url){
