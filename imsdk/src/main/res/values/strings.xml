@@ -1,0 +1,9 @@
+<resources>
+    <string name="app_name">IMSDK</string>
+    <string name="chat_press_talk">按住 说话</string>
+    <string name="chat_image">图片</string>
+    <string name="chat_photo">拍摄</string>
+    <string name="chat_video">小视频</string>
+    <string name="chat_file">文件</string>
+    <string name="chat_release_send">松开 结束</string>
+</resources>

@@ -1,1 +1,1 @@
-include ':app', ':livelib', ':imdemo', ':sdk', ':tlslibrary', ':presentation', ':imsdk3.1.1', ':draw_board', ':whiteboard', ':livedemo', ':utilslib', ':wbesocket'
+include ':app', ':livelib', ':imdemo', ':sdk', ':tlslibrary', ':presentation', ':imsdk3.1.1', ':draw_board', ':whiteboard', ':livedemo', ':utilslib', ':wbesocket', ':livesocketlib', ':imsdk', ':live'

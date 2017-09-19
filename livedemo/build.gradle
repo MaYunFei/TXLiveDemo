@@ -32,6 +32,7 @@ dependencies {
     compile 'com.android.support.constraint:constraint-layout:1.0.2'
     testCompile 'junit:junit:4.12'
     compile project(path: ':livelib')
-    compile project(':whiteboard')
     compile project(':imsdk3.1.1')
+    compile project(':livesocketlib')
+    compile 'com.github.bumptech.glide:glide:3.6.1'
 }

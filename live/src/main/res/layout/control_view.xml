@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/layout_control"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <LinearLayout
+        android:id="@+id/layout_control_up"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@mipmap/img_fplay_bg_up"
+        android:gravity="center_vertical"
+        android:orientation="horizontal">
+
+        <ImageView
+            android:id="@+id/iv_back"
+            android:layout_width="48dp"
+            android:layout_height="48dp"
+            android:src="@mipmap/btn_fplaynav_back" />
+
+        <android.support.v4.widget.Space
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1" />
+
+        <ImageView
+            android:id="@+id/iv_play_audio"
+            android:layout_width="48dp"
+            android:layout_height="48dp"
+            android:src="@drawable/btn_play_audio" />
+
+        <android.support.v4.widget.Space
+            android:layout_width="5dp"
+            android:layout_height="wrap_content" />
+
+        <ImageView
+            android:id="@+id/iv_full_screen"
+            android:layout_width="48dp"
+            android:layout_height="48dp"
+            android:src="@mipmap/btn_splay_fscreen" />
+
+        <android.support.v4.widget.Space
+            android:layout_width="5dp"
+            android:layout_height="wrap_content" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/layout_control_right"
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        android:layout_gravity="right"
+        android:orientation="vertical"
+        android:padding="15dp">
+
+        <Space
+            android:layout_width="wrap_content"
+            android:layout_height="0dp"
+            android:layout_weight="1" />
+
+        <TextView
+            android:id="@+id/tv_clarity"
+            android:layout_width="50dp"
+            android:layout_height="28dp"
+            android:background="@drawable/live_btn"
+            android:gravity="center"
+            android:padding="5dp"
+            android:text="标清"
+            android:textColor="@android:color/white"
+            android:textSize="14sp" />
+
+        <Space
+            android:layout_width="wrap_content"
+            android:layout_height="0dp"
+            android:layout_weight="1" />
+
+        <TextView
+            android:id="@+id/tv_change"
+            android:layout_width="50dp"
+            android:layout_height="28dp"
+            android:background="@drawable/live_btn"
+            android:gravity="center"
+            android:text="切换"
+            android:textColor="@android:color/white" />
+
+        <Space
+            android:layout_width="wrap_content"
+            android:layout_height="0dp"
+            android:layout_weight="1" />
+
+    </LinearLayout>
+</LinearLayout>

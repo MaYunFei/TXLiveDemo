@@ -181,7 +181,7 @@ public class MainActivity extends AppCompatActivity implements TLSPwdLoginListen
      */
     @Override
     public void onError(int i, String s) {
-
+        Log.e("错误",s);
     }
 
     @Override

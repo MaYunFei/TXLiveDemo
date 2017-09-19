@@ -18,7 +18,7 @@
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
 
     <!-- IM必须 -->
-    <meta-data android:name="com.tencent.rdm.uuid" android:value="6c6cb924-3f85-4ad9-b7eb-37b2b624f046" />
+    <!--<meta-data android:name="com.tencent.rdm.uuid" android:value="6c6cb924-3f85-4ad9-b7eb-37b2b624f046" />-->
 
     <!-- 【必须】消息收发service -->
 

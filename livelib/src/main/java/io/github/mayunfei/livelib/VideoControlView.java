@@ -33,6 +33,9 @@ public abstract class VideoControlView extends FrameLayout implements LiveListen
     }
 
     private void init(Context context,AttributeSet attrs) {
+        if (isInEditMode()){
+            return;
+        }
         mVideoView = new TXCloudVideoView(context);
         addView(mVideoView, new LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.MATCH_PARENT));
         mVideoView.setRenderMode(TXLiveConstants.RENDER_MODE_ADJUST_RESOLUTION);

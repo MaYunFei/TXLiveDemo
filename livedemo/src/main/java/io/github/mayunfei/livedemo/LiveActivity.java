@@ -13,6 +13,14 @@ import android.view.Window;
 import android.view.WindowManager;
 import android.widget.ImageView;
 
+import com.dongao.kaoqian.livesocketlib.WsManager;
+import com.dongao.kaoqian.livesocketlib.listener.WsStatusListener;
+import com.dongao.kaoqian.livesocketlib.live.ILiveManager;
+import com.dongao.kaoqian.livesocketlib.live.IWhiteBoard;
+import com.dongao.kaoqian.livesocketlib.message.ClassBeginMessage;
+import com.dongao.kaoqian.livesocketlib.message.ClassRestMessage;
+import com.dongao.kaoqian.livesocketlib.message.LiveMessage;
+import com.dongao.kaoqian.livesocketlib.message.MessageFactory;
 import com.tencent.imsdk.TIMCallBack;
 
 import java.io.ByteArrayInputStream;
@@ -25,10 +33,10 @@ import io.github.mayunfei.imsdk.business.LoginBusiness;
 import io.github.mayunfei.imsdk.ui.ChatFragment;
 import io.github.mayunfei.livedemo.ui.DragGroupView;
 import io.github.mayunfei.livedemo.ui.ScaleLiveView;
+import io.github.mayunfei.livedemo.ui.Whiteboard;
 import io.github.mayunfei.livedemo.websocket.WebSocketUtil;
 import io.github.mayunfei.utilslib.DensityUtils;
 import io.github.mayunfei.utilslib.L;
-import io.github.mayunfei.whiteboard.Whiteboard;
 import okhttp3.OkHttpClient;
 import okhttp3.Request;
 import okhttp3.Response;
@@ -40,8 +48,9 @@ import okio.GzipSink;
 import okio.Okio;
 import okio.Sink;
 
-public class LiveActivity extends AppCompatActivity implements View.OnClickListener, TIMCallBack ,ChatFragment.OnFragmentInteractionListener {
+public class LiveActivity extends AppCompatActivity implements View.OnClickListener, TIMCallBack ,ChatFragment.OnFragmentInteractionListener,ILiveManager {
 
+    private static final String TAG = "LiveActivity";
     /**
      * 播放器view
      */
@@ -70,6 +79,7 @@ public class LiveActivity extends AppCompatActivity implements View.OnClickListe
 
     private float mScreenWidth;
     private float mScreenHeight;
+    private WsManager wsManager;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -91,9 +101,61 @@ public class LiveActivity extends AppCompatActivity implements View.OnClickListe
         mScaleLiveView.setUrl("rtmp://pull.live.dongaocloud.com/live/8250_100159_cif");
         mScreenWidth = DensityUtils.getWidthInPx(this);
         mScreenHeight = DensityUtils.getHeightInPx(this);
-        testSocket();
         initIm();
+        initSocket();
 
+    }
+
+    private void initSocket() {
+        WsManager.Builder builder = new WsManager.Builder(this).needReconnect(true).wsUrl("ws://dev.ws.lvb.dongaocloud.tv/sub?id=100159");
+        wsManager = builder.build();
+        wsManager.startConnect();
+        wsManager.setWsStatusListener(new WsStatusListener() {
+            @Override
+            public void onMessage(String text) {
+                super.onMessage(text);
+                Log.i(TAG,"onMessage");
+                LiveMessage liveMessage = MessageFactory.messagePause(text);
+                if (liveMessage!=null){
+                    liveMessage.handleMessage(LiveActivity.this);
+                }
+            }
+
+            @Override
+            public void onOpen(Response response) {
+                super.onOpen(response);
+                Log.i(TAG,"onOpen");
+            }
+
+            @Override
+            public void onMessage(ByteString bytes) {
+                super.onMessage(bytes);
+            }
+
+            @Override
+            public void onReconnect() {
+                super.onReconnect();
+                Log.i(TAG,"onReconnect");
+            }
+
+            @Override
+            public void onClosing(int code, String reason) {
+                super.onClosing(code, reason);
+                Log.i(TAG,"onClosing");
+            }
+
+            @Override
+            public void onClosed(int code, String reason) {
+                super.onClosed(code, reason);
+                Log.i(TAG,"onClosed");
+            }
+
+            @Override
+            public void onFailure(Throwable t, Response response) {
+                super.onFailure(t, response);
+                Log.i(TAG,"onFailure");
+            }
+        });
     }
 
     private void initIm() {
@@ -156,9 +218,6 @@ public class LiveActivity extends AppCompatActivity implements View.OnClickListe
 
     }
 
-    void testSocket() {
-        WebSocketUtil.init(new OkHttpClient(),"ws://dev.ws.lvb.dongaocloud.tv/sub?id=100159");
-    }
 
     @Override
     protected void onPause() {
@@ -194,6 +253,21 @@ public class LiveActivity extends AppCompatActivity implements View.OnClickListe
 
     @Override
     public void onFragmentInteraction(Uri uri) {
+
+    }
+
+    @Override
+    public IWhiteBoard getWriteBoard() {
+        return mWhiteboard;
+    }
+
+    @Override
+    public void classRest(ClassRestMessage message) {
+
+    }
+
+    @Override
+    public void classBegin(ClassBeginMessage classBeginMessage) {
 
     }
 }
