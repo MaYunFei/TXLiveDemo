@@ -24,9 +24,9 @@
             android:layout_marginLeft="10dp">
             <com.donagao.kaoqian.imsdk.ui.CircleImageView
                 android:id="@+id/leftAvatar"
-                android:layout_width="35dp"
-                android:layout_height="35dp"
-                android:src="@drawable/head_other"
+                android:layout_width="20dp"
+                android:layout_height="20dp"
+                android:src="@drawable/ico_user"
                 android:layout_alignParentLeft="true"/>
             <LinearLayout
                 android:layout_width="wrap_content"
@@ -53,7 +53,7 @@
                     android:clickable="true"
                     android:longClickable="true"
                     android:gravity="center"
-                    android:background="@drawable/bg_bubble_gray"/>
+                    android:background="@drawable/img_talk_light"/>
             </LinearLayout>
 
 
@@ -68,10 +68,21 @@
             android:layout_alignParentRight="true">
             <com.donagao.kaoqian.imsdk.ui.CircleImageView
                 android:id="@+id/rightAvatar"
-                android:layout_width="35dp"
-                android:layout_height="35dp"
-                android:src="@drawable/head_me"
+                android:layout_width="20dp"
+                android:layout_height="20dp"
+                android:src="@drawable/ico_user"
                 android:layout_alignParentRight="true"/>
+            <TextView
+                android:id="@+id/myname"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="@color/text_gray1"
+                android:layout_marginLeft="6dp"
+                android:layout_marginRight="6dp"
+                android:layout_marginBottom="3dp"
+                android:textSize="12sp"
+                android:layout_toLeftOf="@id/rightAvatar"
+                android:text="name"/>
             <RelativeLayout
                 android:id="@+id/rightMessage"
                 android:layout_width="wrap_content"
@@ -83,8 +94,9 @@
                 android:gravity="center"
                 android:clickable="true"
                 android:longClickable="true"
+                android:layout_below="@id/myname"
                 android:layout_toLeftOf="@id/rightAvatar"
-                android:background="@drawable/bg_bubble_blue"/>
+                android:background="@drawable/img_talk_right"/>
             <TextView
                 android:id="@+id/rightDesc"
                 android:layout_alignRight="@id/rightMessage"
@@ -95,6 +107,7 @@
                 android:textSize="12sp"
                 android:textColor="@color/text_gray1"
                 android:visibility="gone"/>
+
             <RelativeLayout
                 android:id="@+id/sendStatus"
                 android:layout_width="wrap_content"

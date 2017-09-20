@@ -10,6 +10,7 @@ import com.dongao.kaoqian.livesocketlib.message.DrawRectMessage;
 import com.dongao.kaoqian.livesocketlib.message.DrawTextMessage;
 
 /**
+ * 处理画板消息
  * Created by mayunfei on 17-9-18.
  */
 

@@ -8,10 +8,11 @@
     android:orientation="vertical">
 
     <LinearLayout
+        android:visibility="visible"
         android:id="@+id/layout_control_up"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:background="@mipmap/img_fplay_bg_up"
+        android:layout_height="60dp"
+        android:background="@mipmap/mediacontroller_top_bg"
         android:gravity="center_vertical"
         android:orientation="horizontal">
 
@@ -48,12 +49,13 @@
     </LinearLayout>
 
     <LinearLayout
+        android:visibility="visible"
         android:id="@+id/layout_control_right"
         android:layout_width="wrap_content"
         android:layout_height="match_parent"
         android:layout_gravity="right"
         android:orientation="vertical"
-        android:padding="15dp">
+        >
 
         <Space
             android:layout_width="wrap_content"
@@ -64,6 +66,8 @@
             android:id="@+id/tv_clarity"
             android:layout_width="50dp"
             android:layout_height="28dp"
+            android:layout_marginRight="15dp"
+            android:layout_marginEnd="15dp"
             android:background="@drawable/live_btn"
             android:gravity="center"
             android:padding="5dp"
@@ -73,8 +77,8 @@
 
         <Space
             android:layout_width="wrap_content"
-            android:layout_height="0dp"
-            android:layout_weight="1" />
+            android:layout_height="20dp"
+             />
 
         <TextView
             android:id="@+id/tv_change"
@@ -83,6 +87,8 @@
             android:background="@drawable/live_btn"
             android:gravity="center"
             android:text="切换"
+            android:layout_marginRight="15dp"
+            android:layout_marginEnd="15dp"
             android:textColor="@android:color/white" />
 
         <Space

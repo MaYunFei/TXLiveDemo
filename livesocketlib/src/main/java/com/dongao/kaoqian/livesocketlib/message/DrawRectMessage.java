@@ -4,6 +4,7 @@ package com.dongao.kaoqian.livesocketlib.message;
 import com.dongao.kaoqian.livesocketlib.live.ILiveManager;
 
 /**
+ * 矩形
  * Created by mayunfei on 17-9-18.
  */
 

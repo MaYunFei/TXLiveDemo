@@ -3,6 +3,7 @@ package com.dongao.kaoqian.livesocketlib.message;
 import java.util.List;
 
 /**
+ * 画板消息
  * Created by mayunfei on 17-9-18.
  */
 
