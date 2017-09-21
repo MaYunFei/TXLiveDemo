@@ -73,6 +73,13 @@ public class TextMessage extends Message {
         return sortList;
     }
 
+//    public TextMessage(String emj){
+//        message = new TIMMessage();
+//        TIMFaceElem faceElem = new TIMFaceElem();
+//        faceElem.setData(emj.getBytes(Charset.forName("UTF-8")));
+//        message.addElement(faceElem);
+//    }
+
     public TextMessage(Editable s) {
         message = new TIMMessage();
         ImageSpan[] spans = s.getSpans(0, s.length(), ImageSpan.class);
@@ -116,7 +123,7 @@ public class TextMessage extends Message {
         if (checkRevoke(viewHolder)) return;
         boolean hasText = false;
         TextView tv = new TextView(context);
-        tv.setTextSize(TypedValue.COMPLEX_UNIT_SP, 18);
+        tv.setTextSize(TypedValue.COMPLEX_UNIT_SP, 16);
         tv.setTextColor(context.getResources().getColor(isSelf() ? R.color.white : R.color.black));
         List<TIMElem> elems = new ArrayList<>();
         for (int i = 0; i < message.getElementCount(); ++i) {
@@ -127,10 +134,6 @@ public class TextMessage extends Message {
         }
         //默认只能发一个表情
         if (isEmj(elems)){
-//            if (isSelf()){
-//            }else {
-//
-//            }
             viewHolder.leftMessage.setBackgroundColor(ContextCompat.getColor(context,android.R.color.transparent));
             viewHolder.rightMessage.setBackgroundColor(ContextCompat.getColor(context,android.R.color.transparent));
         }else {
@@ -202,7 +205,7 @@ public class TextMessage extends Message {
                     TIMFaceElem faceElem = (TIMFaceElem) elems.get(i);
                     int startIndex = stringBuilder.length();
                     try {
-                        int img_id = getResource(String.format("emj_%d", faceElem.getIndex()), context);
+//                        int img_id = getResource(String.format("emj_%d", faceElem.getIndex()), context);
 //                        context.getResources().getDrawable(resource);
 //                        AssetManager am = context.getAssets();
 //                        InputStream is = am.open(String.format("emoticon/%d.gif", faceElem.getIndex()));
@@ -214,7 +217,7 @@ public class TextMessage extends Message {
 //                        matrix.postScale(2, 2);
 //                        Bitmap resizedBitmap = Bitmap.createBitmap(bitmap, 0, 0,
 //                                width, height, matrix, true);
-                        Drawable drawable = ContextCompat.getDrawable(context, img_id);
+                        Drawable drawable = ContextCompat.getDrawable(context, EmoticonUtil.emj[faceElem.getIndex()]);
                         drawable.setBounds(0, 0, drawable.getIntrinsicWidth(), drawable.getIntrinsicHeight());
                         ImageSpan span = new ImageSpan(drawable,ImageSpan.ALIGN_BASELINE);
 //                        ImageSpan span = new ImageSpan(context, resizedBitmap, ImageSpan.ALIGN_BASELINE);

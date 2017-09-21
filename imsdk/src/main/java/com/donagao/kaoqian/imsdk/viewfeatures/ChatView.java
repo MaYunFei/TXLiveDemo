@@ -130,4 +130,6 @@ public interface ChatView  {
      */
     void showToast(String msg);
 
+    void sendFace(int index);
+
 }

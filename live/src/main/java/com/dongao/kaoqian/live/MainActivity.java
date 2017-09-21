@@ -1,5 +1,6 @@
 package com.dongao.kaoqian.live;
 
+import android.content.Context;
 import android.content.pm.ActivityInfo;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
@@ -9,6 +10,7 @@ import android.util.Log;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.WindowManager;
+import android.view.inputmethod.InputMethodManager;
 
 import com.donagao.kaoqian.imsdk.Constant;
 import com.donagao.kaoqian.imsdk.business.InitBusiness;
@@ -32,7 +34,7 @@ import io.github.mayunfei.utilslib.DensityUtils;
 import okhttp3.Response;
 import okio.ByteString;
 
-public class MainActivity extends AppCompatActivity implements ControlView.MediaControlListener, ILiveManager, View.OnClickListener, TIMCallBack {
+public class MainActivity extends AppCompatActivity implements ControlView.MediaControlListener, ILiveManager, View.OnClickListener, TIMCallBack,ChatFragment.OnChatFragmentListener {
 
     private static final String TAG = "MainActivity";
     /**
@@ -69,6 +71,7 @@ public class MainActivity extends AppCompatActivity implements ControlView.Media
      * socket
      */
     private WsManager wsManager;
+    private ChatFragment mChatFragment;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -168,6 +171,7 @@ public class MainActivity extends AppCompatActivity implements ControlView.Media
     public void onFullScreenClick() {
         if (!isFullScreen()) {
             fullScreen();
+            mChatFragment.hideSoftKeyBoard();
         }
         layout_control.hideFullScreen();
     }
@@ -321,7 +325,17 @@ public class MainActivity extends AppCompatActivity implements ControlView.Media
         Log.e("IMSDK","success");
         FragmentManager supportFragmentManager = getSupportFragmentManager();
         FragmentTransaction transaction = supportFragmentManager.beginTransaction();
-        transaction.add(R.id.frame_chat, ChatFragment.newInstance(Constant.GROUP_ID));
+       mChatFragment = ChatFragment.newInstance(Constant.GROUP_ID);
+        transaction.add(R.id.frame_chat, mChatFragment);
         transaction.commit();
+    }
+
+    @Override
+    public void onKeyboardShow(boolean isShow) {
+//        if (isShow){
+//            mBigScreenParent.setVisibility(View.GONE);
+//        }else {
+//            mBigScreenParent.setVisibility(View.VISIBLE);
+//        }
     }
 }

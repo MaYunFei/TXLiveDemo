@@ -6,10 +6,31 @@ package com.donagao.kaoqian.imsdk;
 public class EmoticonUtil {
 
     public static String[] emoticonData = {
-            "[NO]","[撇嘴]","[色]","[发呆]","[得意]","[流泪]","[害羞]",
-            "[闭嘴]","[睡]","[大哭]","[尴尬]","[发怒]","[调皮]","[龇牙]",
-            "[微笑]","[难过]","[酷]","[冷汗]","[抓狂]","[吐]","[偷笑]",
-            "[可爱]","[白眼]","[傲慢]","[饿]","[困]","[惊恐]","[流汗]",
-            "[憨笑]","[大兵]","[奋斗]","[咒骂]","[疑问]","[嘘]","[晕]",
+            "[NO]","[OK]","[加油]","[喜欢]","[奋斗]","[好棒]","[委屈]",
+            "[强]","[得意]","[微笑]","[懂了]","[抱拳]","[握手]","[没听懂]",
+            "[流泪]","[疑问]","[胜利]","[送花]","[难过]","[鼓掌]",
+    };
+
+    public static int[] emj = {
+            R.drawable.emj_0,
+            R.drawable.emj_1,
+            R.drawable.emj_2,
+            R.drawable.emj_3,
+            R.drawable.emj_4,
+            R.drawable.emj_5,
+            R.drawable.emj_6,
+            R.drawable.emj_7,
+            R.drawable.emj_8,
+            R.drawable.emj_9,
+            R.drawable.emj_10,
+            R.drawable.emj_11,
+            R.drawable.emj_12,
+            R.drawable.emj_13,
+            R.drawable.emj_14,
+            R.drawable.emj_15,
+            R.drawable.emj_16,
+            R.drawable.emj_17,
+            R.drawable.emj_18,
+            R.drawable.emj_19,
     };
 }

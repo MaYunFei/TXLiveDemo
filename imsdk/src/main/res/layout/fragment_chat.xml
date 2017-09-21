@@ -15,5 +15,10 @@
         <!--android:id="@+id/input_panel"-->
         <!--android:layout_width="match_parent"-->
         <!--android:layout_height="wrap_content"/>-->
+    <com.donagao.kaoqian.imsdk.ui.ChatInput
+
+        android:id="@+id/chatInput"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"/>
 
 </LinearLayout>

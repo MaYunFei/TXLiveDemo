@@ -1,5 +1,6 @@
 package com.donagao.kaoqian.imsdk.ui;
 
+import android.content.Context;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
@@ -8,9 +9,9 @@ import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AbsListView;
-import android.widget.FrameLayout;
 import android.widget.ListView;
 
+import com.donagao.kaoqian.imsdk.EmoticonUtil;
 import com.donagao.kaoqian.imsdk.R;
 import com.donagao.kaoqian.imsdk.model.Message;
 import com.donagao.kaoqian.imsdk.model.MessageFactory;
@@ -18,18 +19,18 @@ import com.donagao.kaoqian.imsdk.model.TextMessage;
 import com.donagao.kaoqian.imsdk.presenter.ChatPresenter;
 import com.donagao.kaoqian.imsdk.viewfeatures.ChatView;
 import com.tencent.imsdk.TIMConversationType;
+import com.tencent.imsdk.TIMFaceElem;
 import com.tencent.imsdk.TIMMessage;
 import com.tencent.imsdk.TIMMessageStatus;
 import com.tencent.imsdk.ext.message.TIMMessageDraft;
 import com.tencent.imsdk.ext.message.TIMMessageLocator;
 
+import java.nio.charset.Charset;
 import java.util.ArrayList;
 import java.util.List;
 
-import static android.R.id.input;
 
-
-public class ChatFragment extends Fragment implements ChatView{
+public class ChatFragment extends Fragment implements ChatView, ChatInput.OnKeyboardShow {
 
     private static final String TAG = "ChatFragment";
 
@@ -38,6 +39,8 @@ public class ChatFragment extends Fragment implements ChatView{
     private ChatPresenter presenter;
     private ListView listView;
     private ChatAdapter adapter;
+    ChatInput input;
+    private OnChatFragmentListener mListener;
 
     private List<Message> messageList = new ArrayList<>();
 
@@ -69,7 +72,10 @@ public class ChatFragment extends Fragment implements ChatView{
         super.onViewCreated(view, savedInstanceState);
         listView = (ListView) view.findViewById(R.id.list);
         adapter = new ChatAdapter(getContext(),R.layout.item_message,messageList);
-
+        input = view.findViewById(R.id.chatInput);
+        input.setOnKeyboardShow(this);
+        //绑定view
+        input.setChatView(this);
         listView = (ListView) view.findViewById(R.id.list);
         listView.setAdapter(adapter);
         listView.setTranscriptMode(ListView.TRANSCRIPT_MODE_NORMAL);
@@ -78,7 +84,7 @@ public class ChatFragment extends Fragment implements ChatView{
             public boolean onTouch(View v, MotionEvent event) {
                 switch (event.getAction()) {
                     case MotionEvent.ACTION_DOWN:
-//                        input.setInputMode(ChatInput.InputMode.NONE);
+                        input.setInputMode(ChatInput.InputMode.NONE);
                         break;
                 }
                 return false;
@@ -194,8 +200,28 @@ public class ChatFragment extends Fragment implements ChatView{
     }
 
     @Override
-    public void sendText() {
+    public void onAttach(Context context) {
+        super.onAttach(context);
+        if (context instanceof OnChatFragmentListener) {
+            mListener = (OnChatFragmentListener) context;
+        } else {
+            throw new RuntimeException(context.toString()
+                    + " must implement OnFragmentInteractionListener");
+        }
+    }
 
+    @Override
+    public void onDetach() {
+        super.onDetach();
+        presenter.stop();
+        mListener = null;
+    }
+
+    @Override
+    public void sendText() {
+        Message message = new TextMessage(input.getText());
+        presenter.sendMessage(message.getMessage());
+        input.setText("");
     }
 
     @Override
@@ -241,5 +267,30 @@ public class ChatFragment extends Fragment implements ChatView{
     @Override
     public void showToast(String msg) {
 
+    }
+
+    @Override
+    public void sendFace(int index) {
+        TIMMessage message = new TIMMessage();
+        TIMFaceElem faceElem = new TIMFaceElem();
+        faceElem.setData(EmoticonUtil.emoticonData[index].getBytes(Charset.forName("UTF-8")));
+        faceElem.setIndex(index);
+        message.addElement(faceElem);
+        presenter.sendMessage(message);
+    }
+
+    @Override
+    public void onKeyboardShow(boolean isShow) {
+        mListener.onKeyboardShow(isShow);
+    }
+
+    public void hideSoftKeyBoard() {
+        input.hideSoftKeyBoard();
+
+
+    }
+
+    public interface OnChatFragmentListener {
+        void onKeyboardShow(boolean isShow);
     }
 }

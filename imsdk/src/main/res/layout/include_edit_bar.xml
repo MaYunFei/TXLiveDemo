@@ -1,0 +1,72 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <android.support.v4.widget.Space
+        android:layout_width="match_parent"
+        android:layout_height="0.5dp"
+        android:background="@color/my_line" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="#eee"
+        android:gravity="center_vertical"
+        android:orientation="horizontal"
+        android:paddingBottom="6dp"
+        android:paddingLeft="8dp"
+        android:paddingRight="8dp"
+        android:paddingTop="6dp">
+
+
+        <LinearLayout
+            android:id="@+id/rl_editbar_bg"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="13dp"
+            android:layout_marginRight="13dp"
+            android:layout_weight="1"
+            android:background="@drawable/shape_bg_reply_edittext"
+            android:gravity="center_vertical"
+            android:orientation="horizontal">
+
+            <EditText
+                android:id="@+id/input"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:background="#0000"
+                android:maxLines="3"
+                android:minHeight="36dp"
+                android:textSize="16sp" />
+
+
+        </LinearLayout>
+
+        <ImageView
+            android:id="@+id/btnEmoticon"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:clickable="true"
+            android:layout_marginRight="13dp"
+            android:src="@drawable/btn_add_biaoqing" />
+        <Button
+            android:id="@+id/btn_send"
+            android:layout_width="56dp"
+            android:layout_height="32dp"
+            android:background="@drawable/shape_bg_button_reply"
+            android:text="发送"
+            android:textColor="@color/white"
+            android:visibility="visible" />
+    </LinearLayout>
+
+    <android.support.v4.widget.Space
+        android:layout_width="match_parent"
+        android:layout_height="0.5dp"
+        android:background="@color/my_line"/>
+
+
+
+
+</LinearLayout>
