@@ -46,7 +46,10 @@ public class MessageFactory {
                         case LiveMessage.METHOD_CLEARALL:
                             return JSON.parseObject(msgText, DrawClearMessage.class);
                         case LiveMessage.METHOD_TEXT:
+                        case LiveMessage.METHOD_TEXT_SAVE:
                             return JSON.parseObject(msgText, DrawTextMessage.class);
+                        case LiveMessage.METHOD_ARROW:
+                            return JSON.parseObject(msgText, DrawArrowMessage.class);
 
                     }
                     break;

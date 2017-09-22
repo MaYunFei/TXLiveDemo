@@ -36,10 +36,15 @@ public abstract class LiveMessage implements ILiveMessage {
      * 写字
      */
     public static final String METHOD_TEXT = "text";
+    public static final String METHOD_TEXT_SAVE = "textSave";
     /**
      * 矩形
      */
     public static final String METHOD_RECT = "rect";
+    /**
+     * 箭头
+     */
+    public static final String METHOD_ARROW = "arrow";
     /**
      * 橡皮擦
      */

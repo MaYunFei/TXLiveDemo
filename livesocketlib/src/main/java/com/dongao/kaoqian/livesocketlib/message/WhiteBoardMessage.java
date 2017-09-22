@@ -140,6 +140,8 @@ public abstract class WhiteBoardMessage extends LiveMessage {
         private boolean isDown;
         private String gco;
         private List<String> val;
+        private double plagioclase;
+        private double ang;
 
         public float getWidth() {
             return width;
@@ -195,6 +197,22 @@ public abstract class WhiteBoardMessage extends LiveMessage {
 
         public void setVal(List<String> val) {
             this.val = val;
+        }
+
+        public double getPlagioclase() {
+            return plagioclase;
+        }
+
+        public void setPlagioclase(double plagioclase) {
+            this.plagioclase = plagioclase;
+        }
+
+        public double getAng() {
+            return ang;
+        }
+
+        public void setAng(double ang) {
+            this.ang = ang;
         }
 
         @Override

@@ -79,9 +79,9 @@ public class MainActivity extends AppCompatActivity implements ControlView.Media
         setContentView(R.layout.activity_main);
         initView();
         initListener();
-        initLive();
+//        initLive();
         initSocket();
-        initIm();
+//        initIm();
     }
 
     private void initLive() {
@@ -171,7 +171,9 @@ public class MainActivity extends AppCompatActivity implements ControlView.Media
     public void onFullScreenClick() {
         if (!isFullScreen()) {
             fullScreen();
-            mChatFragment.hideSoftKeyBoard();
+            if (mChatFragment!=null){
+                mChatFragment.hideSoftKeyBoard();
+            }
         }
         layout_control.hideFullScreen();
     }

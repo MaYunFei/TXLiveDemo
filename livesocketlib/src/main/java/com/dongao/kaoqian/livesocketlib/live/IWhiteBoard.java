@@ -2,12 +2,14 @@ package com.dongao.kaoqian.livesocketlib.live;
 
 
 import com.dongao.kaoqian.livesocketlib.message.ChangePPTMessage;
+import com.dongao.kaoqian.livesocketlib.message.DrawArrowMessage;
 import com.dongao.kaoqian.livesocketlib.message.DrawClearMessage;
 import com.dongao.kaoqian.livesocketlib.message.DrawEllipseMessage;
 import com.dongao.kaoqian.livesocketlib.message.DrawEraseMessage;
 import com.dongao.kaoqian.livesocketlib.message.DrawLineMessage;
 import com.dongao.kaoqian.livesocketlib.message.DrawRectMessage;
 import com.dongao.kaoqian.livesocketlib.message.DrawTextMessage;
+import com.dongao.kaoqian.livesocketlib.message.DrawTextSaveMessage;
 
 /**
  * 处理画板消息
@@ -49,4 +51,11 @@ public interface IWhiteBoard {
      * 切换ppt
      */
     void changePPPT(ChangePPTMessage message);
+
+    /**
+     * 画箭头
+     */
+    void drawArrow(DrawArrowMessage message);
+
+    void drawTextSave(DrawTextSaveMessage message);
 }
